@@ -1,0 +1,24 @@
+# Update Termux and install packages
+   echo "Updating Termux and installing necessary packages..."
+   pkg update && pkg upgrade -y
+   pkg install openssh python git -y
+
+   # Set up SSH for secure access
+   echo "Setting up SSH..."
+   if [ ! -f ~/.ssh/id_rsa ]; then
+       ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N ""
+   fi
+
+   # Install Python libraries for AI
+   echo "Installing AI Python libraries..."
+   pip install numpy pandas tensorflow openai
+
+   # Clone a GitHub repository for AI models
+   echo "Cloning AI repository..."
+   git clone https://github.com/yourusername/your-ai-repo.git ~/ai_project
+
+   # Run AI build command
+   echo "Running AI build command..."
+   python ~/ai_project/build.py --secure --private
+
+   echo "Setup complete. Your Termux is now configured for AI automation!"
